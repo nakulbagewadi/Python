@@ -1,0 +1,44 @@
+<!-- extend base layout -->
+{% extends "base_layout.html" %}
+
+<title>{{ title }}</title>
+{% block content %}
+	<style>
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	</style>
+	<form action="{{ url_for('statistics') }}" method="POST" name={{ club|title }}>	
+		{{ form.hidden_tag() }} 	
+		
+		<h1>Statistics for {{ club|title }} </h1>
+		
+		<table>
+			<tr>
+			<th> </th>
+			{% for k, v in team.items() %}
+				{% for k1, v1 in v.items() %}
+					{% if k == '2016' %}
+						<th> {{ k1 }} </th>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+			</tr>
+			
+			{% for key1, value1 in team.items() %}
+				<tr>
+				<td><b> {{ key1 }} </b></td>
+				{% for key2, value2 in value1.items() %}
+					<td> {{ value2 }} </td>
+				{% endfor %}
+				</tr>
+			{% endfor %}
+
+		</table>
+		
+		<p><input type="submit" value="Click to show graphs"></p>
+		{{ form.csrf_token }}
+	</form>
+	
+{% endblock %}

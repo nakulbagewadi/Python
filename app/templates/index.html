@@ -1,0 +1,42 @@
+<!-- extend base layout -->
+{% extends "base_layout.html" %}
+
+<title>{{ title }}</title>
+{% block content %}
+
+	<h1>English Premier League</h1>
+	<hr> </hr>
+	<h3>Select a football club</h3>
+	
+	<form action="{{ url_for('index') }}" method="POST" name="EPL CLUBS">
+	
+		{{ form.hidden_tag() }} 
+		
+		{% for club in form.clubs %}
+		<tr>
+			<div>
+				<td>{{ club }}</td>
+				<td>{{ club.label }}</td>
+			</div>
+		</tr>
+		{% endfor %}
+		
+		<hr> </hr>
+		<h3>Select a year </h3>
+		
+		{% for year in form.years %}
+		<tr>
+			<div>
+				<td>{{ year }}</td>
+				<td>{{ year.label }}</td>
+			</div>
+		</tr>
+		{% endfor %}
+		
+		<h3>Press 'Submit' to retrieve statistics</h3> 
+		<p><input type="submit" value="Submit"></p>
+		
+		{{ form.csrf_token }}
+	</form>
+
+{% endblock content %}

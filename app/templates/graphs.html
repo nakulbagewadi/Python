@@ -1,0 +1,11 @@
+<!-- extend base layout -->
+{% extends "base_layout.html" %}
+
+<title>{{ title }}</title>
+{% block content %}
+	
+	<h1>Graphical statistics for {{ club|title }} </h1>
+	
+	<img src='static/plot.png' alt="Image Placeholder" height="500">
+	
+{% endblock %}

@@ -1,0 +1,22 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Home Page</title>
+    {% endif %}
+  </head>
+  <body>
+    <div id='Quick Links'><b> Quick Links :: <a href="/homepage">Home Page</a></b> </div>
+	<div id='Teams'><b> Teams :: 
+	<a href = {{ hyperlinks['liverpool'] }} > Liverpool</a>
+	<a href = {{ hyperlinks['chelsea'] }} > Chelsea</a>
+	<a href = {{ hyperlinks['arsenal'] }} > Arsenal</a>
+	<a href = {{ hyperlinks['manchester united'] }} > Manchester United</a>
+	<a href = {{ hyperlinks['manchester city'] }} > Manchester City</a>
+	<a href = {{ hyperlinks['tottenham hotspur'] }} > Tottenham Hotspur</a></b></div>
+    <hr></hr>
+	{% block content %}{% endblock content%}
+	
+  </body>
+</html>
